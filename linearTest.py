@@ -2,14 +2,16 @@ import serial
 import time
 from random import randint
 import datetime
-import pytz
+#import pytz
 
 start_time = time.time()
 
 while True:
     try:
-		
-	serialport = serial.Serial("/dev/ttyAMA0",9600)
+
+	#serialport = serial.Serial("/dev/ttyAMA0",9600)
+        serialport = serial.Serial("COM3",9600)
+
 	while True:
 		num = 0
 		pos = 0
@@ -42,8 +44,8 @@ while True:
     					f.write("%f seconds" % (time.time() - start_time))
 			if pos == 64:
 				pos = 0
-        
-        
+
+
     except KeyboardInterrupt:
         print("User interrupt encountered. Exiting...")
         time.sleep(3)

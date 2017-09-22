@@ -7,7 +7,8 @@ import string
 
 #try to open the serial connection
 try:
-	serialport = serial.Serial("/dev/ttyAMA0",9600)
+	#serialport = serial.Serial("/dev/ttyAMA0",9600)
+	serialport = serial.Serial("COM6",9600)
 except:
 	print("Unable to open serial connection")
 
@@ -66,12 +67,12 @@ while True:
     try:
 	#clear the screen on startup
 	serialport.write('f200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'.decode('hex'))
-	
+
 	test = raw_input("enter something: ").lower()
 	print test
 	for letter in test:
 		moveLetter(letter)
-		
+
 
     except KeyboardInterrupt:
         print("User interrupt encountered. Exiting...")
@@ -82,5 +83,3 @@ while True:
         print("Unknown error...")
         time.sleep(1)
         exit()
-
-
